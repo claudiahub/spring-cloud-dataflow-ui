@@ -26,6 +26,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {SettingsService} from './settings/settings.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {UrlUtilities} from './url-utilities.service';
 import {AppsModule} from './apps/apps.module';
 
 @NgModule({
@@ -102,5 +103,5 @@ export class AppModule {}
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, UrlUtilities.calculateAssetUrl() + '/i18n/');
 }
